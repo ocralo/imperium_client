@@ -1,0 +1,635 @@
+fileFormatVersion: 2
+guid: e81fb030454db402f82af3d4f4dba35d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 150358647129064056
+    second: LOGO
+  - first:
+      213: -6411574755520696532
+    second: LOGIN sin_letra_1
+  - first:
+      213: 3741111786511329741
+    second: LOGO_VERSION
+  - first:
+      213: -1632268783885060752
+    second: LOGO_CONECTA_R
+  - first:
+      213: -7715073048734864256
+    second: LOGIN sin_letra_4
+  - first:
+      213: -5701825215195991559
+    second: LOGIN sin_letra_5
+  - first:
+      213: -6879129460036930439
+    second: LOGIN sin_letra_6
+  - first:
+      213: 5775728688571517608
+    second: LOGIN sin_letra_7
+  - first:
+      213: -8412073407054902945
+    second: LOGIN sin_letra_8
+  - first:
+      213: 5806578503324058216
+    second: LOGIN sin_letra_9
+  - first:
+      213: 7032320694212849610
+    second: INPUT_1
+  - first:
+      213: -696256374203414807
+    second: USER
+  - first:
+      213: -6230265063341712310
+    second: BACKGROUND
+  - first:
+      213: -1651472049158927829
+    second: BUTTON
+  - first:
+      213: 8226945196853891185
+    second: LOGIN sin_letra_14
+  - first:
+      213: -3034386659325835617
+    second: LOGIN sin_letra_15
+  - first:
+      213: -254849005950684917
+    second: LOGIN sin_letra_16
+  - first:
+      213: 7116813169440757017
+    second: LOGIN sin_letra_17
+  - first:
+      213: 5827234172810235751
+    second: LOGIN sin_letra_18
+  - first:
+      213: -382246543148153251
+    second: LOGIN sin_letra_19
+  - first:
+      213: -2364313726662614469
+    second: LOGIN sin_letra_20
+  - first:
+      213: -8007884488572495281
+    second: LOGIN sin_letra_21
+  - first:
+      213: -3947236367605324580
+    second: LOGIN sin_letra_22
+  - first:
+      213: 5990603260669042089
+    second: LOGIN sin_letra_23
+  - first:
+      213: -6378308246744092140
+    second: LOGIN sin_letra_24
+  - first:
+      213: -757726525603224919
+    second: LOGIN sin_letra_25
+  - first:
+      213: -1915882015782404547
+    second: LOGIN sin_letra_26
+  - first:
+      213: 5560149585886821864
+    second: LOGIN sin_letra_27
+  - first:
+      213: 7590821076093755596
+    second: LOGIN sin_letra_28
+  - first:
+      213: 3455099471474509343
+    second: LOGIN sin_letra_29
+  - first:
+      213: 9012469835889630521
+    second: LOGIN sin_letra_30
+  - first:
+      213: -6303140723746696738
+    second: LOGIN sin_letra_31
+  - first:
+      213: 8775800984646965536
+    second: LOGIN sin_letra_32
+  - first:
+      213: 2241836157337171378
+    second: LOGIN sin_letra_33
+  - first:
+      213: 146147290343313436
+    second: UAO_LOGO
+  - first:
+      213: -8753713648070923104
+    second: LOGIN sin_letra_35
+  - first:
+      213: -5836173315531472955
+    second: LOGIN sin_letra_36
+  - first:
+      213: -5315861683634250599
+    second: LOGIN sin_letra_37
+  - first:
+      213: -1665308034460320602
+    second: LOGIN sin_letra_38
+  - first:
+      213: -6265679143145646268
+    second: LOGIN sin_letra_39
+  - first:
+      213: -1481549287527635761
+    second: LOGIN sin_letra_40
+  - first:
+      213: -7188827270971350084
+    second: LOGIN sin_letra_41
+  - first:
+      213: -7129655368936851678
+    second: LOGIN sin_letra_42
+  - first:
+      213: 788983788040370577
+    second: LOGIN sin_letra_43
+  - first:
+      213: 6697160296801487550
+    second: LOGIN sin_letra_44
+  - first:
+      213: -1250664937705293101
+    second: LOGIN sin_letra_45
+  - first:
+      213: -5830844619706613887
+    second: LOGIN sin_letra_46
+  - first:
+      213: 2314804595919258097
+    second: LOGIN sin_letra_47
+  - first:
+      213: 6459724059726347534
+    second: LOGIN sin_letra_48
+  - first:
+      213: -6449650392094098571
+    second: LOGIN sin_letra_49
+  - first:
+      213: -5728598872306984586
+    second: LOGIN sin_letra_50
+  - first:
+      213: 1666827778858190748
+    second: LOGIN sin_letra_51
+  - first:
+      213: 4072356436243115366
+    second: LOGIN sin_letra_52
+  - first:
+      213: -2906256386783636589
+    second: LOGIN sin_letra_53
+  - first:
+      213: 4994044533605551388
+    second: LOGIN sin_letra_54
+  - first:
+      213: 1801053578004298884
+    second: LOGIN sin_letra_55
+  - first:
+      213: -1526459258442438757
+    second: LOGIN sin_letra_56
+  - first:
+      213: 8329925256044083792
+    second: LOGIN sin_letra_57
+  - first:
+      213: -721112266070685694
+    second: LOGIN sin_letra_58
+  - first:
+      213: 5581889696941855310
+    second: LOGIN sin_letra_59
+  - first:
+      213: 4914312175219185421
+    second: LOGIN sin_letra_60
+  - first:
+      213: -7887377431393962799
+    second: LOGIN sin_letra_61
+  - first:
+      213: 5611105000866848001
+    second: LOGIN sin_letra_62
+  - first:
+      213: 3465762180781078351
+    second: LOGIN sin_letra_63
+  - first:
+      213: 7970553148521309401
+    second: LOGIN sin_letra_64
+  - first:
+      213: -8505007417945234966
+    second: LOGIN sin_letra_65
+  - first:
+      213: -6809325732733660484
+    second: LOGIN sin_letra_66
+  - first:
+      213: -8224053919921412346
+    second: LOGIN sin_letra_67
+  - first:
+      213: 5243924564139943319
+    second: LOGIN sin_letra_68
+  - first:
+      213: 8394368438798940785
+    second: LOGIN sin_letra_69
+  - first:
+      213: -830979854408082627
+    second: LOGIN sin_letra_70
+  - first:
+      213: 412200746376244001
+    second: LOGIN sin_letra_71
+  - first:
+      213: 1535991641758033551
+    second: LOGIN sin_letra_72
+  - first:
+      213: -6554853305915579246
+    second: LOGIN sin_letra_73
+  - first:
+      213: -1563204849671443777
+    second: LOGIN sin_letra_74
+  - first:
+      213: -3370464920110942264
+    second: LOGIN sin_letra_75
+  - first:
+      213: -3554565110769098613
+    second: LOGIN sin_letra_76
+  - first:
+      213: 8202023521162507673
+    second: LOGIN sin_letra_77
+  - first:
+      213: -4984123574360292457
+    second: LOGIN sin_letra_78
+  - first:
+      213: 1284178696886904424
+    second: LOGIN sin_letra_79
+  - first:
+      213: 4439658172050932808
+    second: LOGIN sin_letra_80
+  - first:
+      213: -5680627903165178718
+    second: LOGIN sin_letra_81
+  - first:
+      213: -1408186132741362772
+    second: LOGIN sin_letra_82
+  - first:
+      213: 5076040177051879297
+    second: LOGIN sin_letra_83
+  - first:
+      213: -6319703056519171702
+    second: LOGIN sin_letra_84
+  - first:
+      213: -6967692162176935007
+    second: LOGIN sin_letra_85
+  - first:
+      213: -2753107658767700906
+    second: LOGIN sin_letra_86
+  - first:
+      213: -3196991070600917705
+    second: LOGIN sin_letra_87
+  - first:
+      213: 3061253153100974029
+    second: LOGIN sin_letra_88
+  - first:
+      213: 4470662428000173304
+    second: LOGIN sin_letra_89
+  - first:
+      213: 7257133668825411576
+    second: LOGIN sin_letra_90
+  - first:
+      213: 2163915658454789298
+    second: LOGIN sin_letra_91
+  - first:
+      213: 6151575401440800808
+    second: LOGIN sin_letra_92
+  - first:
+      213: 5790017927755192685
+    second: LOGIN sin_letra_93
+  - first:
+      213: 1405681853428213128
+    second: LOGIN sin_letra_94
+  - first:
+      213: -1446206086362198575
+    second: LOGIN sin_letra_95
+  - first:
+      213: -2106164921567972577
+    second: LOGIN sin_letra_96
+  - first:
+      213: 2283567750963675083
+    second: LOGIN sin_letra_97
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: INPUT_1
+      rect:
+        serializedVersion: 2
+        x: 2747
+        y: 4880
+        width: 6194
+        height: 881
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf6f2d9962d79160800000000000000
+      internalID: 7032320694212849610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: USER
+      rect:
+        serializedVersion: 2
+        x: 11492
+        y: 4235
+        width: 1603
+        height: 1602
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6010f34866656f0800000000000000
+      internalID: -696256374203414807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BACKGROUND
+      rect:
+        serializedVersion: 2
+        x: 2673
+        y: 2936
+        width: 7325
+        height: 1747
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c9dfa2fe6a989a0800000000000000
+      internalID: -6230265063341712310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON
+      rect:
+        serializedVersion: 2
+        x: 4828
+        y: 1922
+        width: 2907
+        height: 742
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2a4561dbeac419e0800000000000000
+      internalID: -1651472049158927829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UAO_LOGO
+      rect:
+        serializedVersion: 2
+        x: 9368
+        y: 171
+        width: 1407
+        height: 759
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c109ccdaf28370200800000000000000
+      internalID: 146147290343313436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGIN sin_letra_36
+      rect:
+        serializedVersion: 2
+        x: 11531
+        y: 0
+        width: 4470
+        height: 1106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cff1287a4fb10fa0800000000000000
+      internalID: -5836173315531472955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO
+      rect:
+        serializedVersion: 2
+        x: 2302
+        y: 5936
+        width: 11381
+        height: 2783
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 9, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8724907946e261200800000000000000
+      internalID: 150358647129064056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO_VERSION
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 521
+        width: 3272
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9e80c39591be330800000000000000
+      internalID: 3741111786511329741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO_CONECTA_R
+      rect:
+        serializedVersion: 2
+        x: 6501
+        y: 163
+        width: 2124
+        height: 697
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075729e60340959e0800000000000000
+      internalID: -1632268783885060752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 57d2edb7fd37246d78322adacb004cce
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
