@@ -253,19 +253,25 @@ public class CameraPointer : MonoBehaviour
                         GeneratePoints.instance.initPosX = (int)m_GazedAtObject.transform.localPosition.x;
                         GeneratePoints.instance.initPosY = (int)m_GazedAtObject.transform.localPosition.z;
                         m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        Debug.Log(GeneratePoints.instance.initPosX + "xI");
+                        Debug.Log(GeneratePoints.instance.finalPosX + "xF");
                         GeneratePoints.instance.isInit = true;
                         GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
                     }
                     else
                     {
-                        GeneratePoints.instance.lineR.positionCount++;
-                        m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
                         GeneratePoints.instance.finalPosX = (int)m_GazedAtObject.transform.localPosition.x;
                         GeneratePoints.instance.finalPosY = (int)m_GazedAtObject.transform.localPosition.z;
-                        GeneratePoints.instance.isInit = false;
-                        GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
-                        GeneratePoints.instance.lineComplete = true;
-                        GeneratePoints.instance.lineCount++;
+                        if (Mathf.Abs(GeneratePoints.instance.finalPosX - GeneratePoints.instance.initPosX) <= 1)
+                        {
+                            GeneratePoints.instance.lineR.positionCount++;
+                            m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                            Debug.Log((Mathf.Abs(GeneratePoints.instance.finalPosX - GeneratePoints.instance.initPosX) <= 1) + "xF-xI");
+                            GeneratePoints.instance.isInit = false;
+                            GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
+                            GeneratePoints.instance.lineComplete = true;
+                            GeneratePoints.instance.lineCount++;
+                        }
                     }
                     break;
                 default:

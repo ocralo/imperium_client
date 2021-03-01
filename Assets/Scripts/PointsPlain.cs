@@ -20,16 +20,8 @@ public class PointsPlain : MonoBehaviour
     {
         ChangeColor();
     }
-    /* public void OnPointerEnter()
-    {
-        ChangeColor();
-    }
-    public void OnPointerExit()
-    {
-        ChangeColor();
-    } */
     public void ChangeColor()
     {
-        this.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+        //this.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 }

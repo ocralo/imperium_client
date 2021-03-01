@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using UnityEngine.XR.Management;
 using TMPro;
 
 public class Login : changeScene
@@ -60,15 +59,6 @@ public class Login : changeScene
             DontDestroyOnLoad(globalDataNew);
         }
     }
-
-    /*  */
-
-    /* public void StartXR()
-    {
-        XRGeneralSettings.Instance.Manager.InitializeLoaderSync();
-        XRGeneralSettings.Instance.Manager.StartSubsystems();
-    } */
-
 
     /*  */
     public IEnumerator LoginRequest(string email, string password, Action<string> result)
