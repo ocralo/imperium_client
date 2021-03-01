@@ -20,7 +20,6 @@ using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.XR.Management;
 
 /// <summary>
 /// Sends messages to gazed GameObject.
@@ -35,11 +34,6 @@ public class CameraPointer : MonoBehaviour
 
     private WaitForSeconds doubleClickTreashHold = new WaitForSeconds(1);
     private int clickCount;
-    void Start()
-    {
-        //StartXR();
-        //StartCoroutine(StartXRIe());
-    }
 
     /// <summary>
     /// Update is called once per frame.
@@ -58,8 +52,6 @@ public class CameraPointer : MonoBehaviour
 
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Debug.Log(hit.transform.tag);
-
             // GameObject detected in front of the camera.
             if (m_GazedAtObject != hit.transform.gameObject)
             {
@@ -73,6 +65,33 @@ public class CameraPointer : MonoBehaviour
                         m_GazedAtObject?.SendMessage("OnPointerExit");
                         m_GazedAtObject = hit.transform.gameObject;
 
+                        break;
+                    case "pointTable":
+                        m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        /* if (Input.GetMouseButtonDown(0))
+                        {
+                            if (!GeneratePoints.instance.isInit)
+                            {
+                                GeneratePoints.instance.lineComplete = false;
+                                GeneratePoints.instance.initPosX = (int)hit.transform.localPosition.x;
+                                GeneratePoints.instance.initPosY = (int)hit.transform.localPosition.z;
+                                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                                GeneratePoints.instance.isInit = true;
+                                GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)hit.transform.position.x, 0, (int)hit.transform.position.z));
+                            }
+                            else
+                            {
+                                GeneratePoints.instance.lineR.positionCount++;
+                                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                                GeneratePoints.instance.finalPosX = (int)hit.transform.localPosition.x;
+                                GeneratePoints.instance.finalPosY = (int)hit.transform.localPosition.z;
+                                GeneratePoints.instance.isInit = false;
+                                GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)hit.transform.position.x, 0, (int)hit.transform.position.z));
+                                GeneratePoints.instance.lineComplete = true;
+                                GeneratePoints.instance.lineCount++;
+                            }
+                        } */
                         break;
                     default:
                         break;
@@ -129,6 +148,10 @@ public class CameraPointer : MonoBehaviour
                         break;
                     case "areaObject":
                         m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "pointTable":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
                         m_GazedAtObject = hit.transform.gameObject;
                         break;
                     default:
@@ -203,11 +226,13 @@ public class CameraPointer : MonoBehaviour
                     selecObj = false;
                     timeToSelect = timeToSelectFinal;
                     break;
+                case "pointTable":
+
+                    break;
                 default:
                     break;
 
             }
-            print("double click!");
             clickCount = 0;
         }
         else
@@ -221,11 +246,32 @@ public class CameraPointer : MonoBehaviour
                 case "areaObject":
                     m_GazedAtObject?.SendMessage("OnPointerEnterClik", m_GazedAtObject.transform);
                     break;
+                case "pointTable":
+                    if (!GeneratePoints.instance.isInit)
+                    {
+                        GeneratePoints.instance.lineComplete = false;
+                        GeneratePoints.instance.initPosX = (int)m_GazedAtObject.transform.localPosition.x;
+                        GeneratePoints.instance.initPosY = (int)m_GazedAtObject.transform.localPosition.z;
+                        m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        GeneratePoints.instance.isInit = true;
+                        GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
+                    }
+                    else
+                    {
+                        GeneratePoints.instance.lineR.positionCount++;
+                        m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                        GeneratePoints.instance.finalPosX = (int)m_GazedAtObject.transform.localPosition.x;
+                        GeneratePoints.instance.finalPosY = (int)m_GazedAtObject.transform.localPosition.z;
+                        GeneratePoints.instance.isInit = false;
+                        GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
+                        GeneratePoints.instance.lineComplete = true;
+                        GeneratePoints.instance.lineCount++;
+                    }
+                    break;
                 default:
                     break;
 
             }
-            print("click!");
         }
     }
 

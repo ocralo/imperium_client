@@ -5,27 +5,51 @@ using UnityEngine;
 public class GeneratePoints : MonoBehaviour
 {
     //Variables
-    public GameObject table;
+    public static GeneratePoints instance;
+    public int lineCount;
+    public bool lineComplete;
+    public int initPosX, initPosY;
+    public int finalPosX, finalPosY;
+    public LineRenderer lineR;
     public int x, y;
     public List<GameObject> listPoints;
+    public GameObject spherePointPrefab;
+
+    public bool isInit = false;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        instance = this;
+        for (int i = 0; i <= x; i++)
+        {
+            //List<GameObject> xlist = new List<GameObject>();
+            for (int j = 0; j <= y; j++)
+            {
+                //  List<GameObject> ylist = new List<GameObject>();
+                //GameObject point = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                GameObject point = Instantiate(spherePointPrefab, new Vector3(this.gameObject.transform.localPosition.x, this.gameObject.transform.localPosition.y, this.gameObject.transform.localPosition.z), Quaternion.identity);
+                point.name = i + "-" + j;
+                point.tag = "pointTable";
+                point.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                point.transform.parent = this.gameObject.transform;
+                point.transform.localPosition = new Vector3(i, 0, j);
+                point.AddComponent<PointsPlain>();
+                //  xlist.Add(point);
+            }
+            //listPointsX.Add(xlist);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //table = this.gameObject;
-
-        for (int i = 0; i < x; i++)
-        {
-            for (int j = 0; i < y; j++)
-            {
-                /* GameObject point = new GameObject(x + "/" + y);
-                point.transform.parent = table.transform;
-                point.transform.position = new Vector3(i, 0, j); */
-                Debug.Log(x + "/" + y);
-            }
-
-        }
-
+        lineR.positionCount = 1;
     }
+
+
 
     // Update is called once per frame
     void Update()
