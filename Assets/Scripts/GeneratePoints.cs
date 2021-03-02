@@ -8,11 +8,12 @@ public class GeneratePoints : MonoBehaviour
     public static GeneratePoints instance;
     public int lineCount;
     public bool lineComplete;
-    public int initPosX, initPosY;
-    public int finalPosX, finalPosY;
+    public float initPosX, initPosY;
+    public float finalPosX, finalPosY;
     public LineRenderer lineR;
+    public List<Vector3> listPointEneable = new List<Vector3>();
     public int x, y;
-    public List<GameObject> listPoints;
+    public string pointNameInit;
     public GameObject spherePointPrefab;
 
     public bool isInit = false;
@@ -36,7 +37,7 @@ public class GeneratePoints : MonoBehaviour
                 point.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 point.transform.parent = this.gameObject.transform;
                 point.transform.localPosition = new Vector3(i, 0, j);
-                point.AddComponent<PointsPlain>();
+                //point.AddComponent<PointsPlain>();
                 //  xlist.Add(point);
             }
             //listPointsX.Add(xlist);

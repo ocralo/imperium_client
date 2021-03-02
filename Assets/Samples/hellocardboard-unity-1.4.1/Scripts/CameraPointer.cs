@@ -197,7 +197,6 @@ public class CameraPointer : MonoBehaviour
     //metodo para detectar el tiempo que se mira un objeto
     private void onPointerObserver()
     {
-        Debug.Log(timeToSelect);
         if (timeToSelect < 0)
         {
             selecObj = true;
@@ -249,29 +248,100 @@ public class CameraPointer : MonoBehaviour
                 case "pointTable":
                     if (!GeneratePoints.instance.isInit)
                     {
-                        GeneratePoints.instance.lineComplete = false;
                         GeneratePoints.instance.initPosX = (int)m_GazedAtObject.transform.localPosition.x;
                         GeneratePoints.instance.initPosY = (int)m_GazedAtObject.transform.localPosition.z;
+                        GeneratePoints.instance.listPointEneable.Add(new Vector3(GeneratePoints.instance.initPosX, 0, GeneratePoints.instance.initPosY));
+
+                        //GeneratePoints.instance.cutrentX = Int32.Parse(m_GazedAtObject.transform.name.Split('-')[0]);
+                        //GeneratePoints.instance.currentY = Int32.Parse(m_GazedAtObject.transform.name.Split('-')[1]);
+                        foreach (Vector3 childEneable in GeneratePoints.instance.listPointEneable)
+                        {
+                            foreach (Transform child in GeneratePoints.instance.gameObject.transform)
+                            {
+                                string auxData = childEneable.x + "-" + childEneable.z;
+                                if (child.transform.name == auxData)
+                                {
+                                    child.gameObject.GetComponent<SphereCollider>().enabled = false;
+                                    child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                                }
+                            }
+                        }
+
+                        if (GeneratePoints.instance.lineCount < 1)
+                        {
+                            foreach (Transform child in GeneratePoints.instance.gameObject.transform)
+                            {
+                                if (GeneratePoints.instance.initPosX == Int32.Parse(child.transform.name.Split('-')[0]) || GeneratePoints.instance.initPosY == Int32.Parse(child.transform.name.Split('-')[1]))
+                                {
+                                    child.gameObject.GetComponent<SphereCollider>().enabled = true;
+                                    child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.white;
+                                }
+                                else
+                                {
+                                    child.gameObject.GetComponent<SphereCollider>().enabled = false;
+                                    child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                                }
+                            }
+                        }
                         m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                        Debug.Log(GeneratePoints.instance.initPosX + "xI");
-                        Debug.Log(GeneratePoints.instance.finalPosX + "xF");
                         GeneratePoints.instance.isInit = true;
-                        GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
+                        //GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
+                        if (GeneratePoints.instance.lineCount < 1) GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3(m_GazedAtObject.transform.position.x, 0, m_GazedAtObject.transform.position.z));
                     }
                     else
                     {
-                        GeneratePoints.instance.finalPosX = (int)m_GazedAtObject.transform.localPosition.x;
-                        GeneratePoints.instance.finalPosY = (int)m_GazedAtObject.transform.localPosition.z;
-                        if (Mathf.Abs(GeneratePoints.instance.finalPosX - GeneratePoints.instance.initPosX) <= 1)
+                        GeneratePoints.instance.lineR.positionCount++;
+                        m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                        GeneratePoints.instance.isInit = false;
+                        GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3(m_GazedAtObject.transform.position.x, 0, m_GazedAtObject.transform.position.z));
+                        GeneratePoints.instance.lineCount++;
+                        GeneratePoints.instance.finalPosX = m_GazedAtObject.transform.localPosition.x;
+                        GeneratePoints.instance.finalPosY = m_GazedAtObject.transform.localPosition.z;
+                        /*/**/
+                        GeneratePoints.instance.initPosX = (int)m_GazedAtObject.transform.localPosition.x;
+                        GeneratePoints.instance.initPosY = (int)m_GazedAtObject.transform.localPosition.z;
+
+                        GeneratePoints.instance.listPointEneable.Add(new Vector3(GeneratePoints.instance.initPosX, 0, GeneratePoints.instance.initPosY));
+
+                        foreach (Transform child in GeneratePoints.instance.gameObject.transform)
                         {
-                            GeneratePoints.instance.lineR.positionCount++;
-                            m_GazedAtObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
-                            Debug.Log((Mathf.Abs(GeneratePoints.instance.finalPosX - GeneratePoints.instance.initPosX) <= 1) + "xF-xI");
-                            GeneratePoints.instance.isInit = false;
-                            GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)m_GazedAtObject.transform.position.x, 0, (int)m_GazedAtObject.transform.position.z));
-                            GeneratePoints.instance.lineComplete = true;
-                            GeneratePoints.instance.lineCount++;
+                            if (GeneratePoints.instance.initPosX == Int32.Parse(child.transform.name.Split('-')[0]) || GeneratePoints.instance.initPosY == Int32.Parse(child.transform.name.Split('-')[1]))
+                            {
+                                child.gameObject.GetComponent<SphereCollider>().enabled = true;
+                                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.white;
+                            }
+                            else
+                            {
+                                child.gameObject.GetComponent<SphereCollider>().enabled = false;
+                                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                            }
                         }
+
+                        foreach (Vector3 childEneable in GeneratePoints.instance.listPointEneable)
+                        {
+                            foreach (Transform child in GeneratePoints.instance.gameObject.transform)
+                            {
+                                string auxData = childEneable.x + "-" + childEneable.z;
+                                if (child.transform.name == auxData)
+                                {
+                                    child.gameObject.GetComponent<SphereCollider>().enabled = false;
+                                    child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                                }
+                            }
+                        }
+
+                        string auxDataa = GeneratePoints.instance.listPointEneable[0].x + "-" + GeneratePoints.instance.listPointEneable[0].z;
+
+                        foreach (Transform child in GeneratePoints.instance.gameObject.transform)
+                        {
+                            if (child.transform.name == auxDataa)
+                            {
+                                child.gameObject.GetComponent<SphereCollider>().enabled = true;
+                                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.cyan;
+                            }
+                        }
+
+                        GeneratePoints.instance.isInit = true;
                     }
                     break;
                 default:

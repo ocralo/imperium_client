@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class PointsPlain : MonoBehaviour
 {
+    //vars
+    public bool statePoint = false;
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void SetStatePoint(bool state)
+    {
+        statePoint = state;
+    }
+    public bool GetStatePoint()
+    {
+        return statePoint;
     }
 
     // Update is called once per frame
