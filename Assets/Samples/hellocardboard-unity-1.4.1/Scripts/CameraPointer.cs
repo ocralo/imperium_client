@@ -20,6 +20,7 @@ using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Sends messages to gazed GameObject.
@@ -334,11 +335,17 @@ public class CameraPointer : MonoBehaviour
 
                         foreach (Transform child in GeneratePoints.instance.gameObject.transform)
                         {
-                            if (child.transform.name == auxDataa)
+                            if (child.transform.name == auxDataa && GeneratePoints.instance.lineCount > 2)
                             {
                                 child.gameObject.GetComponent<SphereCollider>().enabled = true;
                                 child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.cyan;
                             }
+                        }
+
+                        if (GeneratePoints.instance.listPointEneable[0] == GeneratePoints.instance.listPointEneable.Last())
+                        {
+                            GeneratePoints.instance.CreateQuad();
+                            Debug.Log("Entr muñeco");
                         }
 
                         GeneratePoints.instance.isInit = true;
