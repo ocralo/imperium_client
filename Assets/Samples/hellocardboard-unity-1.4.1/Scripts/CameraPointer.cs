@@ -346,10 +346,12 @@ public class CameraPointer : MonoBehaviour
                         {
                             GeneratePoints.instance.CreateQuad();
                             Debug.Log("Entr muñeco");
+                            //se cierra la figura
                         }
 
                         GeneratePoints.instance.isInit = true;
                     }
+                    GeneratePoints.instance.ChangeTextRope();
                     break;
                 default:
                     break;

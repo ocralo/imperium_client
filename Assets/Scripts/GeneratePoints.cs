@@ -1,19 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GeneratePoints : MonoBehaviour
 {
     //Variables
     public static GeneratePoints instance;
-    public int lineCount;
-    public bool lineComplete;
+    [Header("Current Point")]
     public float initPosX, initPosY;
     public float finalPosX, finalPosY;
+    [Header("Line Rope")]
+    public int lineCount;
+    public bool lineComplete;
     public LineRenderer lineR;
     public List<Vector3> listPointEneable = new List<Vector3>();
     public int x, y;
-    public string pointNameInit;
+    [Header("Rope")]
+    public TextMeshProUGUI textMeshRope;
+    public int limitRopes = 10;
+    public string limitRopeText = "Cuerdas Restantes: ";
+    [Header("Area")]
+    public TextMeshProUGUI textMeshArea;
+    [Header("Sphere Point Prefab")]
     public GameObject spherePointPrefab;
 
     public bool isInit = false;
@@ -48,6 +57,23 @@ public class GeneratePoints : MonoBehaviour
     void Start()
     {
         lineR.positionCount = 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void ChangeTextRope()
+    {
+        limitRopeText = "Cuerdas Restantes: " + (limitRopes - lineCount);
+        textMeshRope.text = limitRopeText;
+        RopesImagesArray.instance.StateRenderRopes(limitRopes - lineCount);
+    }
+    public void ChangeTextArea(int areaFig)
+    {
+        textMeshArea.text = "Area de la figura creada: <b>" + areaFig + "<b>";
     }
 
     public float CalculateSurfaceArea(Mesh mesh)
@@ -109,16 +135,6 @@ public class GeneratePoints : MonoBehaviour
         {
             vector2List[i] = new Vector2(listPointEneable[i].x, listPointEneable[i].z);
         }
-
-        /* int[] tris = new int[12]
-                {
-            // lower left triangle
-            5, 0, 1,
-            // upper right triangle
-            5, 1, 4,
-            1, 2, 3,
-            3, 4, 1
-                }; */
 
         //UVs
         var uvs = new Vector2[listPointEneable.Count];
@@ -185,14 +201,8 @@ public class GeneratePoints : MonoBehaviour
 
         //CalculateSurfaceArea(mesh);
         Debug.Log(SuperficieIrregularPolygon());
+        ChangeTextArea((int)SuperficieIrregularPolygon());
         //mesh.triangles = lineCount;
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
