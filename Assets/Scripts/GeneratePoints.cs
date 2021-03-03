@@ -50,6 +50,49 @@ public class GeneratePoints : MonoBehaviour
         lineR.positionCount = 1;
     }
 
+    public float CalculateSurfaceArea(Mesh mesh)
+    {
+        var triangles = mesh.triangles;
+        var vertices = mesh.vertices;
+
+        double sum = 0.0;
+
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            Vector3 corner = vertices[triangles[i]];
+            Vector3 a = vertices[triangles[i + 1]] - corner;
+            Vector3 b = vertices[triangles[i + 2]] - corner;
+
+            sum += Vector3.Cross(a, b).magnitude;
+        }
+
+        Debug.Log((float)(sum / 2.0) + 4);
+        return (float)(sum / 2.0) + 4;
+    }
+
+    public float SuperficieIrregularPolygon()
+    {
+        float temp = 0;
+        int i = 0;
+        for (; i < listPointEneable.Count; i++)
+        {
+            if (i != listPointEneable.Count - 1)
+            {
+                float mulA = listPointEneable[i].x * listPointEneable[i + 1].z;
+                float mulB = listPointEneable[i + 1].x * listPointEneable[i].z;
+                temp = temp + (mulA - mulB);
+            }
+            else
+            {
+                float mulA = listPointEneable[i].x * listPointEneable[0].z;
+                float mulB = listPointEneable[0].x * listPointEneable[i].z;
+                temp = temp + (mulA - mulB);
+            }
+        }
+        temp *= 0.5f;
+        return Mathf.Abs(temp);
+    }
+
     public void CreateQuad()
     {
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -139,6 +182,9 @@ public class GeneratePoints : MonoBehaviour
 
         mesh.uv = uvs;
         meshFilter.mesh = mesh;
+
+        //CalculateSurfaceArea(mesh);
+        Debug.Log(SuperficieIrregularPolygon());
         //mesh.triangles = lineCount;
     }
 
