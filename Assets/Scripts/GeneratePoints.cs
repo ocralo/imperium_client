@@ -24,6 +24,11 @@ public class GeneratePoints : MonoBehaviour
     public TextMeshProUGUI textMeshArea;
     [Header("Sphere Point Prefab")]
     public GameObject spherePointPrefab;
+    [Header("Timer")]
+    public TextMeshProUGUI textTimer;
+    public float time = 0.0f;
+    public bool timerIsRunning = false;
+    public float timeRemaining = 0;
 
     public bool isInit = false;
 
@@ -62,7 +67,31 @@ public class GeneratePoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining += Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
+        }
+    }
 
+    //timer
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        textTimer.text = "Tiempo: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void ChangeTextRope()
@@ -73,7 +102,7 @@ public class GeneratePoints : MonoBehaviour
     }
     public void ChangeTextArea(int areaFig)
     {
-        textMeshArea.text = "Area de la figura creada: <b>" + areaFig + "<b>";
+        textMeshArea.text = "Area de la figura creada: <b>" + areaFig + " cm2<b>";
     }
 
     public float CalculateSurfaceArea(Mesh mesh)
