@@ -20,15 +20,17 @@ public class GeneratePoints : MonoBehaviour
     public TextMeshProUGUI textMeshRope;
     public int limitRopes = 10;
     public string limitRopeText = "Cuerdas Restantes: ";
-    [Header("Area")]
+    [Header("Area and Parameter")]
     public TextMeshProUGUI textMeshArea;
+    public TextMeshProUGUI textMeshPerimeter;
     [Header("Sphere Point Prefab")]
     public GameObject spherePointPrefab;
     [Header("Timer")]
     public TextMeshProUGUI textTimer;
     public float time = 0.0f;
     public bool timerIsRunning = false;
-    public float timeRemaining = 0;
+    public float StartTime;
+    public float timeRemaining;
 
     public bool isInit = false;
 
@@ -69,17 +71,8 @@ public class GeneratePoints : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            if (timeRemaining > 0)
-            {
-                timeRemaining += Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
+            timeRemaining += Time.deltaTime;
+            DisplayTime(timeRemaining);
         }
     }
 
@@ -94,6 +87,12 @@ public class GeneratePoints : MonoBehaviour
         textTimer.text = "Tiempo: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void SetTimerRunning(bool timerR)
+    {
+        timerIsRunning = timerR;
+    }
+
+    //text Rope
     public void ChangeTextRope()
     {
         limitRopeText = "Cuerdas Restantes: " + (limitRopes - lineCount);
@@ -102,9 +101,12 @@ public class GeneratePoints : MonoBehaviour
     }
     public void ChangeTextArea(int areaFig)
     {
+        PointPlayer.instance.AddPointsUser(10 * areaFig);
         textMeshArea.text = "Area de la figura creada: <b>" + areaFig + " cm2<b>";
+        textMeshPerimeter.text = "Perimetro de la figura creada: <b>" + lineCount + " cm<b>";
     }
 
+    //Calculate Area
     public float CalculateSurfaceArea(Mesh mesh)
     {
         var triangles = mesh.triangles;

@@ -32,6 +32,7 @@ public class CameraPointer : MonoBehaviour
     public float timeToSelectFinal = 3.0f;
     public bool selecObj = true;
     private GameObject m_GazedAtObject = null;
+    private GameObject pointsPlayer;
 
     private WaitForSeconds doubleClickTreashHold = new WaitForSeconds(1);
     private int clickCount;
@@ -70,29 +71,6 @@ public class CameraPointer : MonoBehaviour
                     case "pointTable":
                         m_GazedAtObject?.SendMessage("OnPointerExit");
                         m_GazedAtObject = hit.transform.gameObject;
-                        /* if (Input.GetMouseButtonDown(0))
-                        {
-                            if (!GeneratePoints.instance.isInit)
-                            {
-                                GeneratePoints.instance.lineComplete = false;
-                                GeneratePoints.instance.initPosX = (int)hit.transform.localPosition.x;
-                                GeneratePoints.instance.initPosY = (int)hit.transform.localPosition.z;
-                                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                                GeneratePoints.instance.isInit = true;
-                                GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount, new Vector3((int)hit.transform.position.x, 0, (int)hit.transform.position.z));
-                            }
-                            else
-                            {
-                                GeneratePoints.instance.lineR.positionCount++;
-                                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.black;
-                                GeneratePoints.instance.finalPosX = (int)hit.transform.localPosition.x;
-                                GeneratePoints.instance.finalPosY = (int)hit.transform.localPosition.z;
-                                GeneratePoints.instance.isInit = false;
-                                GeneratePoints.instance.lineR.SetPosition(GeneratePoints.instance.lineCount + 1, new Vector3((int)hit.transform.position.x, 0, (int)hit.transform.position.z));
-                                GeneratePoints.instance.lineComplete = true;
-                                GeneratePoints.instance.lineCount++;
-                            }
-                        } */
                         break;
                     default:
                         break;
@@ -345,8 +323,18 @@ public class CameraPointer : MonoBehaviour
                         if (GeneratePoints.instance.listPointEneable[0] == GeneratePoints.instance.listPointEneable.Last())
                         {
                             GeneratePoints.instance.CreateQuad();
-                            Debug.Log("Entr muñeco");
+                            Debug.Log("Entrs muñeco y cerre la figura");
                             //se cierra la figura
+                            PointPlayer.instance.AddPointsUser(10 + (100 - (int)GeneratePoints.instance.timeRemaining));
+                            GeneratePoints.instance.SetTimerRunning(false);
+                        }
+
+                        if (GeneratePoints.instance.listPointEneable.Count == GeneratePoints.instance.limitRopes + 1)
+                        {
+                            Debug.Log("Entrs muñeco y se acabo la cuerda");
+                            //se cierra la figura
+                            PointPlayer.instance.AddPointsUser(10);
+                            GeneratePoints.instance.SetTimerRunning(false);
                         }
 
                         GeneratePoints.instance.isInit = true;
