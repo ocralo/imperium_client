@@ -34,7 +34,7 @@ public class Login : changeScene
             if (rs.auth)
             {
                 CreateGlobalToken(rs.token);
-                ViewLoadScene(1);
+                ViewLoadScene(2);
             }
             else
             {
@@ -69,7 +69,10 @@ public class Login : changeScene
         form.AddField("email", email);
         form.AddField("password", password);
 
-        UnityWebRequest www = UnityWebRequest.Post(url, form);
+
+        Debug.Log(url);
+
+        UnityWebRequest www = UnityWebRequest.Post(url + "/login", form);
 
         yield return www.SendWebRequest();
 
