@@ -11,6 +11,7 @@ public class Login : changeScene
 {
     public TMP_InputField user;
     public TMP_InputField password;
+    public string url = "http://localhost:7001";
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +64,6 @@ public class Login : changeScene
     /*  */
     public IEnumerator LoginRequest(string email, string password, Action<string> result)
     {
-        string url = "http://localhost:7001/login";
 
         WWWForm form = new WWWForm();
         form.AddField("email", email);
@@ -85,7 +85,6 @@ public class Login : changeScene
 
     public IEnumerator getDataDB(string user, string password, Action<bool> result)
     {
-        string url = "http://localhost:7001";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
 

@@ -23,6 +23,9 @@ public class GeneratePoints : MonoBehaviour
     [Header("Area and Parameter")]
     public TextMeshProUGUI textMeshArea;
     public TextMeshProUGUI textMeshPerimeter;
+    [Header("input Area")]
+    public int areaInputnumber;
+    public int areaFignumber;
     [Header("Sphere Point Prefab")]
     public GameObject spherePointPrefab;
     [Header("Timer")]
@@ -102,6 +105,7 @@ public class GeneratePoints : MonoBehaviour
     public void ChangeTextArea(int areaFig)
     {
         PointPlayer.instance.AddPointsUser(10 * areaFig);
+        areaFignumber = areaFig;
         textMeshArea.text = "Area de la figura creada: <b>" + areaFig + " cm2<b>";
         textMeshPerimeter.text = "Perimetro de la figura creada: <b>" + lineCount + " cm<b>";
     }

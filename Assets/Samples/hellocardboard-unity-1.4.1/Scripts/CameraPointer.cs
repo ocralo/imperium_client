@@ -27,12 +27,13 @@ using System.Linq;
 /// </summary>
 public class CameraPointer : MonoBehaviour
 {
-    private const float k_MaxDistance = 10;
+    private const float k_MaxDistance = 30;
     public float timeToSelect = 3.0f;
     public float timeToSelectFinal = 3.0f;
     public bool selecObj = true;
     private GameObject m_GazedAtObject = null;
     private GameObject pointsPlayer;
+    public GameObject canvasAreaInput;
 
     private WaitForSeconds doubleClickTreashHold = new WaitForSeconds(1);
     private int clickCount;
@@ -70,6 +71,26 @@ public class CameraPointer : MonoBehaviour
                         break;
                     case "pointTable":
                         m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "ContinueGame":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "ContinueMenu":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "upAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "downAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "saveAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
                         m_GazedAtObject = hit.transform.gameObject;
                         break;
                     default:
@@ -130,6 +151,26 @@ public class CameraPointer : MonoBehaviour
                         m_GazedAtObject = hit.transform.gameObject;
                         break;
                     case "pointTable":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "upAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "downAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "saveAreaButton":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "ContinueGame":
+                        //m_GazedAtObject?.SendMessage("OnPointerExit");
+                        m_GazedAtObject = hit.transform.gameObject;
+                        break;
+                    case "ContinueMenu":
                         //m_GazedAtObject?.SendMessage("OnPointerExit");
                         m_GazedAtObject = hit.transform.gameObject;
                         break;
@@ -205,7 +246,14 @@ public class CameraPointer : MonoBehaviour
                     timeToSelect = timeToSelectFinal;
                     break;
                 case "pointTable":
-
+                    break;
+                case "ContinueGame":
+                    //the number 100 is sent, because sending 0 throws error, 100 equal to 0
+                    m_GazedAtObject?.SendMessage("OnPointerEnterDoubleClick", 100);
+                    break;
+                case "ContinueMenu":
+                    //the number 100 is sent, because sending 0 throws error, 100 equal to 0
+                    m_GazedAtObject?.SendMessage("OnPointerEnterDoubleClick", 1);
                     break;
                 default:
                     break;
@@ -224,7 +272,21 @@ public class CameraPointer : MonoBehaviour
                 case "areaObject":
                     m_GazedAtObject?.SendMessage("OnPointerEnterClik", m_GazedAtObject.transform);
                     break;
+                case "ContinueGame":
+                    break;
+                case "ContinueMenu":
+                    break;
+                case "upAreaButton":
+                    m_GazedAtObject?.SendMessage("OnPointerEnterClick", 2);
+                    break;
+                case "downAreaButton":
+                    m_GazedAtObject?.SendMessage("OnPointerEnterClick", 1);
+                    break;
+                case "saveAreaButton":
+                    m_GazedAtObject?.SendMessage("OnPointerEnterClick", 4);
+                    break;
                 case "pointTable":
+
                     if (!GeneratePoints.instance.isInit)
                     {
                         GeneratePoints.instance.initPosX = (int)m_GazedAtObject.transform.localPosition.x;
@@ -327,6 +389,7 @@ public class CameraPointer : MonoBehaviour
                             //se cierra la figura
                             PointPlayer.instance.AddPointsUser(10 + (100 - (int)GeneratePoints.instance.timeRemaining));
                             GeneratePoints.instance.SetTimerRunning(false);
+                            canvasAreaInput.SetActive(true);
                         }
 
                         if (GeneratePoints.instance.listPointEneable.Count == GeneratePoints.instance.limitRopes + 1)
@@ -335,6 +398,7 @@ public class CameraPointer : MonoBehaviour
                             //se cierra la figura
                             PointPlayer.instance.AddPointsUser(10);
                             GeneratePoints.instance.SetTimerRunning(false);
+                            canvasAreaInput.SetActive(true);
                         }
 
                         GeneratePoints.instance.isInit = true;

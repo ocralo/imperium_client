@@ -6,6 +6,11 @@ TagManager:
   tags:
   - interactive
   - pointTable
+  - ContinueGame
+  - ContinueMenu
+  - upAreaButton
+  - downAreaButton
+  - saveAreaButton
   layers:
   - Default
   - TransparentFX
