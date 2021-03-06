@@ -1363,6 +1363,7 @@ MonoBehaviour:
   user: {fileID: 205540212}
   password: {fileID: 1906345508}
   url: http://192.168.39.164:7001
+  nextLevel: 2
 --- !u!4 &916693611
 Transform:
   m_ObjectHideFlags: 0
@@ -1868,6 +1869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MusicGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007087852520714089, guid: 3407c40ee1e8c4ff88e94893adee15eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4007087852520714091, guid: 3407c40ee1e8c4ff88e94893adee15eb,
         type: 3}

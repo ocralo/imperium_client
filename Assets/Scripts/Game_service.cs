@@ -12,6 +12,7 @@ public class Game_service : changeScene
     public TMP_InputField password;
     public string url;
     public string token;
+    public int nextLevel;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -36,8 +37,8 @@ public class Game_service : changeScene
             {
                 if (rs.idGame != null && rs.idGame != 0)
                 {
-                    ViewLoadScene(2);
                     SetGlobalData(rs.idGame);
+                    ViewLoadScene(nextLevel);
                 }
             }
             else

@@ -12,6 +12,7 @@ public class Login : changeScene
     public TMP_InputField user;
     public TMP_InputField password;
     public string url;
+    public int nextLevel;
 
 
     /// <summary>
@@ -35,7 +36,7 @@ public class Login : changeScene
             if (rs.auth)
             {
                 CreateGlobalToken(rs.token);
-                ViewLoadScene(2);
+                ViewLoadScene(nextLevel);
             }
             else
             {
