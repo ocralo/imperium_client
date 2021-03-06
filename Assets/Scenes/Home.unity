@@ -968,6 +968,7 @@ MonoBehaviour:
   user: {fileID: 0}
   password: {fileID: 0}
   url: http://localhost:7001
+  nextLevel: 0
 --- !u!4 &207411150
 Transform:
   m_ObjectHideFlags: 0
@@ -1134,6 +1135,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256108292}
   m_CullTransparentMesh: 0
+--- !u!1 &300320640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300320642}
+  - component: {fileID: 300320641}
+  m_Layer: 0
+  m_Name: globalData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300320641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300320640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ae2c4057fce4902874b9b9b3fc5ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Token: 
+  IdGame: 0
+  url: http://192.168.39.164:7001
+--- !u!4 &300320642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300320640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302195600
 GameObject:
   m_ObjectHideFlags: 0

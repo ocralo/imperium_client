@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
-
-public class Game_service : changeScene
+public class SendPoint_service : changeScene
 {
-
-    public TMP_InputField user;
-    public TMP_InputField password;
+    [Header("Point to send Server")]
+    public int point;
+    [Header("Data necesary to send Server")]
     public string url;
     public string token;
+    public int gameId;
     public int nextLevel;
+    public GameObject cameraVr;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -24,22 +25,22 @@ public class Game_service : changeScene
         {
             url = globalData.GetComponent<GlobalData>().url;
             token = globalData.GetComponent<GlobalData>().Token;
+            gameId = globalData.GetComponent<GlobalData>().IdGame;
         }
     }
 
     public void Submit()
     {
-        StartCoroutine(LoginRequest(user.text, password.text, json =>
+        StartCoroutine(SendPiontRequest(point, gameId, json =>
         {
             ResponseQueryGame rs = JsonUtility.FromJson<ResponseQueryGame>(json);
             Debug.Log(json);
             if (!rs.error)
             {
-                if (rs.idGame != null && rs.idGame != 0)
-                {
-                    SetGlobalData(rs.idGame);
-                    ViewLoadScene(nextLevel);
-                }
+                //SetGlobalData(rs.idGame);
+                cameraVr.GetComponent<VrModeController>().ExitVR();
+                ViewLoadScene(nextLevel);
+
             }
             else
             {
@@ -68,17 +69,17 @@ public class Game_service : changeScene
         }
     }
 
-    public IEnumerator LoginRequest(string email, string password, Action<string> result)
+    public IEnumerator SendPiontRequest(int point, int gameId, Action<string> result)
     {
 
         WWWForm form = new WWWForm();
-        form.AddField("name", email);
-        form.AddField("password", password);
+        form.AddField("point", point);
+        form.AddField("gameId", gameId);
 
 
         Debug.Log(url);
 
-        UnityWebRequest www = UnityWebRequest.Post(url + "/game/create", form);
+        UnityWebRequest www = UnityWebRequest.Post(url + "/game/points", form);
 
         www.SetRequestHeader("Authorization", "Bearer " + token);
 
@@ -93,14 +94,11 @@ public class Game_service : changeScene
             result(www.downloadHandler.text);
         }
     }
-
 }
 
 [Serializable]
-public class ResponseQueryGame
+public class ResponseQueryPoint
 {
     public string message;
-    public int idGame;
     public bool error;
 }
-

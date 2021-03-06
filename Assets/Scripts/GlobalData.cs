@@ -9,11 +9,19 @@ public class GlobalData : MonoBehaviour
     public string url = "http://localhost:7001";
 
     /// <summary>
-    /// Awake is called when the script instance is being loaded.
+    /// Start is called when the script instance is being loaded.
     /// </summary>
-    void Awake()
+    void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        GameObject globalData = GameObject.Find("globalData");
+        if (GameObject.Find("globalData") != null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

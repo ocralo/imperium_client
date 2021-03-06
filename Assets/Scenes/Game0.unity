@@ -6790,6 +6790,7 @@ MonoBehaviour:
   generatePoint: {fileID: 988966603}
   pointPlayer: {fileID: 1583829083}
   canvasInput: {fileID: 611592830}
+  sendData_server: {fileID: 824331937}
   areaRopes: {fileID: 742127989}
   perimeterRopes: {fileID: 397683320}
   textInputState: {fileID: 1158481137}
@@ -9682,6 +9683,7 @@ MonoBehaviour:
   generatePoint: {fileID: 988966603}
   pointPlayer: {fileID: 1583829083}
   canvasInput: {fileID: 611592830}
+  sendData_server: {fileID: 824331937}
   areaRopes: {fileID: 742127989}
   perimeterRopes: {fileID: 397683320}
   textInputState: {fileID: 1158481137}
@@ -10039,6 +10041,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 819048254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &824331937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824331938}
+  - component: {fileID: 824331939}
+  m_Layer: 0
+  m_Name: SendData_Server
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &824331938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824331937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1502.6854, y: 797.09784, z: -112.391846}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824331939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824331937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64843d4f885754d11be2de7d73792c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 781712616}
+  canvasCharge: {fileID: 1110795477}
+  canvasInit: {fileID: 1080379465}
+  point: 0
+  url: 
+  token: 
+  gameId: 0
+  nextLevel: 1
+  cameraVr: {fileID: 854905462}
 --- !u!1 &825750254
 GameObject:
   m_ObjectHideFlags: 0
@@ -18244,6 +18298,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 19.48
       objectReference: {fileID: 0}
+    - target: {fileID: 6431058410701455633, guid: 807f2311499f24d46ad24c77047ba43e,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6431058411076814035, guid: 807f2311499f24d46ad24c77047ba43e,
         type: 3}
       propertyPath: m_RootOrder
@@ -18303,6 +18362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Environment 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431058411608343948, guid: 807f2311499f24d46ad24c77047ba43e,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6474255209579965319, guid: 807f2311499f24d46ad24c77047ba43e,
         type: 3}
@@ -20122,7 +20186,7 @@ GameObject:
   - component: {fileID: 1583829085}
   - component: {fileID: 1583829084}
   m_Layer: 0
-  m_Name: globaldata
+  m_Name: globaldataPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20142,6 +20206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointUser: 0
   textPoint: {fileID: 1006734061}
+  gameObjPointService: {fileID: 824331937}
 --- !u!4 &1583829085
 Transform:
   m_ObjectHideFlags: 0
@@ -25447,6 +25512,7 @@ MonoBehaviour:
   generatePoint: {fileID: 988966603}
   pointPlayer: {fileID: 1583829083}
   canvasInput: {fileID: 611592830}
+  sendData_server: {fileID: 824331937}
   areaRopes: {fileID: 742127989}
   perimeterRopes: {fileID: 397683320}
   textInputState: {fileID: 1158481137}

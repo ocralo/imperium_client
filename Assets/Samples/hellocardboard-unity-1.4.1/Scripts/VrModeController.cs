@@ -114,7 +114,7 @@ public class VrModeController : MonoBehaviour
     /// <summary>
     /// Exits VR mode.
     /// </summary>
-    private void ExitVR()
+    public void ExitVR()
     {
         StopXR();
     }

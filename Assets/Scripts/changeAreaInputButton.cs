@@ -9,6 +9,7 @@ public class changeAreaInputButton : MonoBehaviour
     public GameObject generatePoint;
     public GameObject pointPlayer;
     public GameObject canvasInput;
+    public GameObject sendData_server;
     public GameObject areaRopes, perimeterRopes;
     public TextMeshProUGUI textInputState;
     public void OnPointerEnterClick(int i)
@@ -42,7 +43,6 @@ public class changeAreaInputButton : MonoBehaviour
             }
             StartCoroutine("WaitCahngecolorTextInput");
             this.gameObject.GetComponent<MeshCollider>().enabled = false;
-
         }
     }
 
@@ -54,6 +54,7 @@ public class changeAreaInputButton : MonoBehaviour
         canvasInput.SetActive(false);
         areaRopes.SetActive(true);
         perimeterRopes.SetActive(true);
+        sendData_server.GetComponent<SendPoint_service>().Submit();
     }
 }
 

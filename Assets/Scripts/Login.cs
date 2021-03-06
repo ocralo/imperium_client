@@ -18,7 +18,7 @@ public class Login : changeScene
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
-    void Awake()
+    void Start()
     {
         GameObject globalData = GameObject.Find("globalData");
         if (GameObject.Find("globalData") != null)

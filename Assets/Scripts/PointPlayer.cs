@@ -8,6 +8,7 @@ public class PointPlayer : MonoBehaviour
     public static PointPlayer instance;
     public int pointUser = 0;
     public TextMeshProUGUI textPoint;
+    public GameObject gameObjPointService;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -21,6 +22,7 @@ public class PointPlayer : MonoBehaviour
     {
         pointUser += point;
         textPoint.text = "Puntuación " + pointUser;
+        gameObjPointService.GetComponent<SendPoint_service>().point = pointUser;
     }
 
 }
