@@ -2,17 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 
-public class Login : changeScene
+public class Game_service : changeScene
 {
+
     public TMP_InputField user;
     public TMP_InputField password;
     public string url;
-
+    public string token;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -23,6 +22,7 @@ public class Login : changeScene
         if (GameObject.Find("globalData") != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
+            token = globalData.GetComponent<GlobalData>().Token;
         }
     }
 
@@ -30,50 +30,56 @@ public class Login : changeScene
     {
         StartCoroutine(LoginRequest(user.text, password.text, json =>
         {
-            ResponseQuery rs = JsonUtility.FromJson<ResponseQuery>(json);
+            ResponseQueryGame rs = JsonUtility.FromJson<ResponseQueryGame>(json);
             Debug.Log(json);
-            if (rs.auth)
+            if (!rs.error)
             {
-                CreateGlobalToken(rs.token);
-                ViewLoadScene(2);
+                if (rs.idGame != null && rs.idGame != 0)
+                {
+                    ViewLoadScene(2);
+                    SetGlobalData(rs.idGame);
+                }
             }
             else
             {
 
             }
-            Debug.Log(rs.auth);
         }));
     }
 
-    public void CreateGlobalToken(string token)
+
+    public void SetGlobalData(int idGame)
     {
         GameObject globalData = GameObject.Find("globalData");
         if (GameObject.Find("globalData") != null)
         {
-            globalData.GetComponent<GlobalData>().Token = token;
+            globalData.GetComponent<GlobalData>().IdGame = idGame;
         }
         else
         {
             GameObject globalDataNew = new GameObject();
             globalDataNew.name = "globalData";
             globalDataNew.AddComponent<GlobalData>();
-            globalDataNew.GetComponent<GlobalData>().Token = token;
+            globalData.GetComponent<GlobalData>().IdGame = idGame;
+            globalData.GetComponent<GlobalData>().url = url;
+            globalData.GetComponent<GlobalData>().Token = token;
             DontDestroyOnLoad(globalDataNew);
         }
     }
 
-    /*  */
     public IEnumerator LoginRequest(string email, string password, Action<string> result)
     {
 
         WWWForm form = new WWWForm();
-        form.AddField("email", email);
+        form.AddField("name", email);
         form.AddField("password", password);
 
 
         Debug.Log(url);
 
-        UnityWebRequest www = UnityWebRequest.Post(url + "/user/login", form);
+        UnityWebRequest www = UnityWebRequest.Post(url + "/game/create", form);
+
+        www.SetRequestHeader("Authorization", "Bearer " + token);
 
         yield return www.SendWebRequest();
 
@@ -87,33 +93,13 @@ public class Login : changeScene
         }
     }
 
-    public IEnumerator getDataDB(string user, string password, Action<bool> result)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
-        {
-
-            //webRequest.SetRequestHeader("Authorization", "Bearer " + token);
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.isNetworkError)
-            {
-                Debug.Log(": Error: " + webRequest.error);
-            }
-            else
-            {
-                string json = webRequest.downloadHandler.text;
-                //ResponseBasket responseBasket = JsonUtility.FromJson<ResponseBasket>(json);
-                Debug.Log(json);
-                //result(responseBasket);
-            }
-        }
-    }
 }
 
 [Serializable]
-public class ResponseQuery
+public class ResponseQueryGame
 {
     public string message;
-    public bool auth;
-    public string token;
+    public int idGame;
+    public bool error;
 }
+
