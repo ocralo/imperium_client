@@ -2053,6 +2053,7 @@ MonoBehaviour:
   globalData: {fileID: 0}
   pointsMeshSecondPlayer: {fileID: 1226324126}
   url: http://192.168.39.164:7001
+  dataToSend: 
 --- !u!4 &142727137
 Transform:
   m_ObjectHideFlags: 0
