@@ -6,6 +6,7 @@ public class GlobalData : MonoBehaviour
 {
     public string Token;
     public int IdGame;
+    public int playerNum;
     public string url = "http://localhost:7001";
     public int point = 0;
     public float time = 0.0f;

@@ -37,7 +37,7 @@ public class Game_service : changeScene
             {
                 if (rs.idGame != null && rs.idGame != 0)
                 {
-                    SetGlobalData(rs.idGame);
+                    SetGlobalData(rs.idGame, rs.player);
                     ViewLoadScene(nextLevel);
                 }
             }
@@ -49,12 +49,13 @@ public class Game_service : changeScene
     }
 
 
-    public void SetGlobalData(int idGame)
+    public void SetGlobalData(int idGame, int playerGame)
     {
         GameObject globalData = GameObject.Find("globalData");
         if (GameObject.Find("globalData") != null)
         {
             globalData.GetComponent<GlobalData>().IdGame = idGame;
+            globalData.GetComponent<GlobalData>().playerNum = playerGame;
         }
         else
         {
@@ -100,6 +101,7 @@ public class Game_service : changeScene
 public class ResponseQueryGame
 {
     public string message;
+    public int player;
     public int idGame;
     public bool error;
 }
