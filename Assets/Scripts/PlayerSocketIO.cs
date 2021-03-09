@@ -2,17 +2,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Socket.Quobject.SocketIoClientDotNet.Client;
+using socket.io;
 using UnityEngine;
 
 public class PlayerSocketIO : MonoBehaviour
 {
     public static PlayerSocketIO instance;
-    private QSocket socket;
+    //private QSocket socket;
     public GameObject globalData;
     public GameObject pointsMeshSecondPlayer;
     public string url;
     public string dataToSend;
+
+    public Socket socket;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -24,54 +26,52 @@ public class PlayerSocketIO : MonoBehaviour
 
     void Start()
     {
+        socket = Socket.Connect(url);
+
         if (GameObject.Find("globalData") != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
         }
         Debug.Log("start");
-        socket = IO.Socket(url);
 
-        socket.On(QSocket.EVENT_CONNECT, () =>
-        {
-            Debug.Log("Connected");
-            //socket.Emit("chat", "test mobile");
-        });
-
-        /* socket.On("onPointChange", data =>
-        {
-            DataSendPoint  requestData = JsonUtility.FromJson<DataSendPoint>(data.ToString());
-                Debug.Log("hola1 : " );
-            foreach (Transform item in pointsMeshSecondPlayer.transform)
-            {
-                Debug.Log("holaf : " +item.transform.name);
-                if(item.transform.name == requestData.namePoint){
-                    item.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-                }else{
-                    item.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
-
-                }
-            }
-            Debug.Log("data : " + data.ToString());
-        }); */
-        socket.On("point", data =>
-        {
-            string dataJson = data.ToString().Replace("'","\"").Replace("\\","").Replace("}\"","}").Substring(1);
-            GiveData(dataJson);
-        });
-
-        /* socket.On("chat", data =>
-        {
-            Debug.Log("data : " + data);
-        }); */
     }
 
+    void LateUpdate()
+    {
+        if (socket.IsConnected)
+        {
+            socket.On("point", (string data) =>
+                {
+                    Debug.Log("entre");
+                    //Debug.Log(data);
+                    string dataJson = data.Replace("\"", "").Replace("'", "\"");
+                    //Debug.Log(dataJson);
+                    GiveData(dataJson);
+                });
+        }
+    }
+
+    public GameObject GivePointMesh()
+    {
+        return pointsMeshSecondPlayer;
+    }
     public void GiveData(string data)
     {
-            DataSendPoint  requestData= JsonUtility.FromJson<DataSendPoint>(data);
-            Debug.Log("holaf : " + requestData.namePoint);             
+        DataSendPoint requestData = JsonUtility.FromJson<DataSendPoint>(data);
+        //Debug.Log("holaf : " + requestData.namePoint);
+        Debug.Log(pointsMeshSecondPlayer.name + " - " + requestData.namePoint);
+        foreach (Transform child in pointsMeshSecondPlayer.transform)
+        {
+            if (child.gameObject.name == requestData.namePoint)
+            {
+                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+            }
+        }
+        //GameObject pointsMeshSecondPlayerAux = GameObject.Find("Plane Game player 2");
     }
 
-    public void SendPointFig(string namePoint,int player){
+    public void SendPointFig(string namePoint, int player)
+    {
 
         DataSendPoint dataSendPoint = new DataSendPoint();
         dataSendPoint.player = player;
@@ -81,14 +81,20 @@ public class PlayerSocketIO : MonoBehaviour
 
         dataToSend = json;
 
-        socket.Emit("pointChange", json);
+        if (socket.IsConnected)
+        {
+            socket.EmitJson("pointChange", json);
+        }
+
+
+        //socket.Emit("pointChange", json);
     }
 
     private void OnDestroy()
     {
-        socket.Disconnect();
+        //socket.Disconnect();
     }
-    
+
 }
 
 [Serializable]
