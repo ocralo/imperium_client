@@ -384,7 +384,7 @@ public class CameraPointer : MonoBehaviour
 
                         if (GeneratePoints.instance.listPointEneable[0] == GeneratePoints.instance.listPointEneable.Last())
                         {
-                            GeneratePoints.instance.CreateQuad();
+
                             Debug.Log("Entrs muñeco y cerre la figura");
                             //se cierra la figura
                             switch (Math.Floor(GeneratePoints.instance.timeRemaining / 60))
@@ -424,7 +424,9 @@ public class CameraPointer : MonoBehaviour
                                     break;
                             }
                             GeneratePoints.instance.SetTimerRunning(false);
+                            Debug.Log("fin muñeco");
                             canvasAreaInput.SetActive(true);
+                            GeneratePoints.instance.CreateQuad();
                         }
 
                         if (GeneratePoints.instance.listPointEneable.Count == GeneratePoints.instance.limitRopes + 1)

@@ -1166,7 +1166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Token: 
   IdGame: 0
-  url: http://192.168.0.8:7001
+  playerNum: 0
+  url: http://192.168.39.164:7001
+  point: 0
+  time: 0
 --- !u!4 &300320642
 Transform:
   m_ObjectHideFlags: 0

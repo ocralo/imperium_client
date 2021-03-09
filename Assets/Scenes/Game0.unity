@@ -2053,6 +2053,7 @@ MonoBehaviour:
   globalData: {fileID: 0}
   pointsMeshSecondPlayer: {fileID: 1226324126}
   url: http://192.168.39.164:7001
+  token: 
   dataToSend: 
   socket: {fileID: 0}
 --- !u!4 &142727137
@@ -4871,7 +4872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &397683321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14187,7 +14188,7 @@ PrefabInstance:
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9887036
       objectReference: {fileID: 0}
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
@@ -14197,7 +14198,7 @@ PrefabInstance:
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.14988388
       objectReference: {fileID: 0}
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
@@ -14212,7 +14213,7 @@ PrefabInstance:
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 17.240002
       objectReference: {fileID: 0}
     - target: {fileID: 8219351019616932639, guid: d8a644cadaa6e4262adac9beedc13475,
         type: 3}
