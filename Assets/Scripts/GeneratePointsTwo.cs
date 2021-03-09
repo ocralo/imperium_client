@@ -24,7 +24,7 @@ public class GeneratePointsTwo : MonoBehaviour
                 point.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 point.transform.parent = this.gameObject.transform;
                 //point.transform.localPosition = new Vector3(i, j, this.gameObject.transform.localPosition.z);
-                point.transform.localPosition = new Vector3(i, 0, -j);
+                point.transform.localPosition = new Vector3(-i, j, 0);
                 //point.AddComponent<PointsPlain>();
                 //  xlist.Add(point);
             }

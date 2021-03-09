@@ -438,7 +438,7 @@ public class CameraPointer : MonoBehaviour
 
                         GeneratePoints.instance.isInit = true;
                     }
-                    PlayerSocketIO.instance.SendPointFig(m_GazedAtObject.transform.name, 1);
+                    PlayerSocketIO.instance.SendPointFig(m_GazedAtObject.transform.name, 1, GeneratePoints.instance.limitRopes - GeneratePoints.instance.lineCount);
                     GeneratePoints.instance.ChangeTextRope();
                     break;
                 default:

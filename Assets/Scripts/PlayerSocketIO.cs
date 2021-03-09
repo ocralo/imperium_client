@@ -12,6 +12,7 @@ public class PlayerSocketIO : MonoBehaviour
     public GameObject globalData;
     public GameObject pointsMeshSecondPlayer;
     public string url;
+    public string token;
     public string dataToSend;
 
     public Socket socket;
@@ -31,6 +32,7 @@ public class PlayerSocketIO : MonoBehaviour
         if (GameObject.Find("globalData") != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
+            token = globalData.GetComponent<GlobalData>().Token;
         }
         Debug.Log("start");
 
@@ -64,18 +66,21 @@ public class PlayerSocketIO : MonoBehaviour
         {
             if (child.gameObject.name == requestData.namePoint)
             {
-                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
             }
         }
         //GameObject pointsMeshSecondPlayerAux = GameObject.Find("Plane Game player 2");
     }
 
-    public void SendPointFig(string namePoint, int player)
+    public void SendPointFig(string namePoint, int player, int rope)
     {
 
         DataSendPoint dataSendPoint = new DataSendPoint();
         dataSendPoint.player = player;
         dataSendPoint.namePoint = namePoint;
+        dataSendPoint.rope = rope;
+        dataSendPoint.token = token;
+
 
         string json = JsonUtility.ToJson(dataSendPoint);
 
@@ -101,6 +106,8 @@ public class PlayerSocketIO : MonoBehaviour
 public class DataSendPoint
 {
     public int player;
+    public int point;
+    public int rope;
     public string namePoint;
     public string token;
 }
