@@ -26,6 +26,11 @@ public class Ajustes : MonoBehaviour
         musicVolume = vol;
     }
 
+    public void setUrl(string url)
+    {
+        GameObject.Find("globalData").GetComponent<GlobalData>().url = url;
+    }
+
     // Update is called once per frame
     void Update()
     {

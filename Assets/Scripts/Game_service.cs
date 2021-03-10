@@ -8,8 +8,13 @@ using TMPro;
 public class Game_service : changeScene
 {
 
+    [Header("Create Game")]
     public TMP_InputField user;
     public TMP_InputField password;
+    [Header("Login Game")]
+    public TMP_InputField user2;
+    public TMP_InputField password2;
+    [Header("Data Server")]
     public string url;
     public string token;
     public int nextLevel;
@@ -30,6 +35,27 @@ public class Game_service : changeScene
     public void Submit()
     {
         StartCoroutine(LoginRequest(user.text, password.text, json =>
+        {
+            ResponseQueryGame rs = JsonUtility.FromJson<ResponseQueryGame>(json);
+            Debug.Log(json);
+            if (!rs.error)
+            {
+                if (rs.idGame != null && rs.idGame != 0)
+                {
+                    SetGlobalData(rs.idGame, rs.player);
+                    ViewLoadScene(nextLevel);
+                }
+            }
+            else
+            {
+
+            }
+        }));
+    }
+
+    public void SubmitLogin()
+    {
+        StartCoroutine(LoginGameRequest(user2.text, password2.text, json =>
         {
             ResponseQueryGame rs = JsonUtility.FromJson<ResponseQueryGame>(json);
             Debug.Log(json);
@@ -80,6 +106,32 @@ public class Game_service : changeScene
         Debug.Log(url);
 
         UnityWebRequest www = UnityWebRequest.Post(url + "/game/create", form);
+
+        www.SetRequestHeader("Authorization", "Bearer " + token);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            result(www.downloadHandler.text);
+        }
+    }
+
+    public IEnumerator LoginGameRequest(string email, string password, Action<string> result)
+    {
+
+        WWWForm form = new WWWForm();
+        form.AddField("name", email);
+        form.AddField("password", password);
+
+
+        Debug.Log(url);
+
+        UnityWebRequest www = UnityWebRequest.Post(url + "/game/login", form);
 
         www.SetRequestHeader("Authorization", "Bearer " + token);
 
