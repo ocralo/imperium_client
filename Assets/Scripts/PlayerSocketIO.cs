@@ -13,7 +13,6 @@ public class PlayerSocketIO : MonoBehaviour
     public GameObject pointsMeshSecondPlayer;
     public string url;
     public string token;
-    public string dataToSend;
 
     public Socket socket;
 
@@ -23,21 +22,30 @@ public class PlayerSocketIO : MonoBehaviour
     void Awake()
     {
         instance = this;
+        socket = Socket.Connect(url);
     }
 
     void Start()
     {
-        socket = Socket.Connect(url);
-
         globalData = GameObject.Find("globalData");
 
         if (globalData != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
             token = globalData.GetComponent<GlobalData>().Token;
+            socket.EmitJson("join_room", globalData.GetComponent<GlobalData>().IdGame.ToString());
         }
         Debug.Log("start");
+    }
 
+    public void JoinRoom()
+    {
+        Debug.Log(socket.IsConnected);
+
+        if (socket.IsConnected)
+        {
+            socket.Emit("join_room", "9");
+        }
     }
 
     void LateUpdate()
@@ -55,10 +63,6 @@ public class PlayerSocketIO : MonoBehaviour
         }
     }
 
-    public GameObject GivePointMesh()
-    {
-        return pointsMeshSecondPlayer;
-    }
     public void GiveData(string data)
     {
         DataSendPoint requestData = JsonUtility.FromJson<DataSendPoint>(data);
@@ -71,7 +75,6 @@ public class PlayerSocketIO : MonoBehaviour
                 child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
             }
         }
-        //GameObject pointsMeshSecondPlayerAux = GameObject.Find("Plane Game player 2");
     }
 
     public void SendPointFig(string namePoint, int rope)
@@ -82,11 +85,10 @@ public class PlayerSocketIO : MonoBehaviour
         dataSendPoint.namePoint = namePoint;
         dataSendPoint.rope = rope;
         dataSendPoint.token = token;
+        dataSendPoint.idGame = globalData != null ? globalData.GetComponent<GlobalData>().IdGame : 9;
 
 
         string json = JsonUtility.ToJson(dataSendPoint);
-
-        dataToSend = json;
 
         if (socket.IsConnected)
         {
@@ -96,12 +98,6 @@ public class PlayerSocketIO : MonoBehaviour
 
         //socket.Emit("pointChange", json);
     }
-
-    private void OnDestroy()
-    {
-        //socket.Disconnect();
-    }
-
 }
 
 [Serializable]
@@ -109,6 +105,7 @@ public class DataSendPoint
 {
     public int player;
     public int point;
+    public int idGame;
     public int rope;
     public string namePoint;
     public string token;
