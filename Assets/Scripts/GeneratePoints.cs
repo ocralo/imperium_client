@@ -30,7 +30,6 @@ public class GeneratePoints : MonoBehaviour
     public GameObject spherePointPrefab;
     [Header("Timer")]
     public TextMeshProUGUI textTimer;
-    public float time = 0.0f;
     public bool timerIsRunning = false;
     public float StartTime;
     public float timeRemaining;

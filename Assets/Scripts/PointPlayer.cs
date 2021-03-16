@@ -23,6 +23,15 @@ public class PointPlayer : MonoBehaviour
         pointUser += point;
         textPoint.text = "Puntuación " + pointUser;
         gameObjPointService.GetComponent<SendPoint_service>().point = pointUser;
+        try
+        {
+            GameObject.Find("globalData").GetComponent<GlobalData>().point = pointUser;
+            GameObject.Find("globalData").GetComponent<GlobalData>().time = GeneratePoints.instance.timeRemaining;
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("error catch");
+        }
     }
 
 }
