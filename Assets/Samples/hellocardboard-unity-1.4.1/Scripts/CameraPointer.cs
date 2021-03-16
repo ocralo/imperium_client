@@ -384,12 +384,49 @@ public class CameraPointer : MonoBehaviour
 
                         if (GeneratePoints.instance.listPointEneable[0] == GeneratePoints.instance.listPointEneable.Last())
                         {
-                            GeneratePoints.instance.CreateQuad();
+
                             Debug.Log("Entrs muñeco y cerre la figura");
                             //se cierra la figura
-                            PointPlayer.instance.AddPointsUser(10 + (100 - (int)GeneratePoints.instance.timeRemaining));
+                            switch (Math.Floor(GeneratePoints.instance.timeRemaining / 60))
+                            {
+                                case 0:
+                                    PointPlayer.instance.AddPointsUser(1000);
+                                    break;
+                                case 1:
+                                    PointPlayer.instance.AddPointsUser(900);
+                                    break;
+                                case 2:
+                                    PointPlayer.instance.AddPointsUser(800);
+                                    break;
+                                case 3:
+                                    PointPlayer.instance.AddPointsUser(700);
+                                    break;
+                                case 4:
+                                    PointPlayer.instance.AddPointsUser(600);
+                                    break;
+                                case 5:
+                                    PointPlayer.instance.AddPointsUser(500);
+                                    break;
+                                case 6:
+                                    PointPlayer.instance.AddPointsUser(400);
+                                    break;
+                                case 7:
+                                    PointPlayer.instance.AddPointsUser(300);
+                                    break;
+                                case 8:
+                                    PointPlayer.instance.AddPointsUser(200);
+                                    break;
+                                case 9:
+                                    PointPlayer.instance.AddPointsUser(100);
+                                    break;
+                                default:
+                                    PointPlayer.instance.AddPointsUser(10);
+                                    break;
+                            }
                             GeneratePoints.instance.SetTimerRunning(false);
+                            Debug.Log("fin muñeco");
                             canvasAreaInput.SetActive(true);
+                            GeneratePoints.instance.CreateQuad();
                         }
 
                         if (GeneratePoints.instance.listPointEneable.Count == GeneratePoints.instance.limitRopes + 1)
@@ -403,6 +440,7 @@ public class CameraPointer : MonoBehaviour
 
                         GeneratePoints.instance.isInit = true;
                     }
+                    PlayerSocketIO.instance.SendPointFig(m_GazedAtObject.transform.name, GeneratePoints.instance.limitRopes - GeneratePoints.instance.lineCount);
                     GeneratePoints.instance.ChangeTextRope();
                     break;
                 default:
