@@ -9,11 +9,13 @@ using TMPro;
 
 public class Login : changeScene
 {
+    [Header("Inputs User Data")]
     public TMP_InputField user;
     public TMP_InputField password;
+    [Header("Data Server")]
     public string url;
     public int nextLevel;
-
+    [Header("Alert Error")]
     public GameObject errorGameObj;
     public TextMeshProUGUI textError;
 

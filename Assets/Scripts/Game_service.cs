@@ -18,6 +18,9 @@ public class Game_service : changeScene
     public string url;
     public string token;
     public int nextLevel;
+    [Header("Alert Error")]
+    public GameObject errorGameObj;
+    public TextMeshProUGUI textError;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -40,7 +43,7 @@ public class Game_service : changeScene
             Debug.Log(json);
             if (!rs.error)
             {
-                if (rs.idGame != null && rs.idGame != 0)
+                if (rs.idGame != 0)
                 {
                     SetGlobalData(rs.idGame, rs.player);
                     ViewLoadScene(nextLevel);
@@ -48,9 +51,15 @@ public class Game_service : changeScene
             }
             else
             {
-
+                textError.text = rs.message;
+                ShowErrorMesage();
             }
         }));
+    }
+
+    public void ShowErrorMesage()
+    {
+        errorGameObj.GetComponent<Animator>().Play("showNotificationAlert", 0);
     }
 
     public void SubmitLogin()
@@ -61,7 +70,7 @@ public class Game_service : changeScene
             Debug.Log(json);
             if (!rs.error)
             {
-                if (rs.idGame != null && rs.idGame != 0)
+                if (rs.idGame != 0)
                 {
                     SetGlobalData(rs.idGame, rs.player);
                     ViewLoadScene(nextLevel);
@@ -69,7 +78,8 @@ public class Game_service : changeScene
             }
             else
             {
-
+                textError.text = rs.message;
+                ShowErrorMesage();
             }
         }));
     }
@@ -114,6 +124,8 @@ public class Game_service : changeScene
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            textError.text = www.error;
+            ShowErrorMesage();
         }
         else
         {
@@ -140,6 +152,8 @@ public class Game_service : changeScene
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            textError.text = www.error;
+            ShowErrorMesage();
         }
         else
         {
