@@ -14,6 +14,9 @@ public class Login : changeScene
     public string url;
     public int nextLevel;
 
+    public GameObject errorGameObj;
+    public TextMeshProUGUI textError;
+
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -40,10 +43,16 @@ public class Login : changeScene
             }
             else
             {
-
+                textError.text = rs.message;
+                ShowErrorMesage();
             }
             Debug.Log(rs.auth);
         }));
+    }
+
+    public void ShowErrorMesage()
+    {
+        errorGameObj.GetComponent<Animator>().Play("showNotificationAlert", 0);
     }
 
     public void CreateGlobalToken(string token)
@@ -81,6 +90,8 @@ public class Login : changeScene
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            textError.text = www.error;
+            ShowErrorMesage();
         }
         else
         {
@@ -99,6 +110,8 @@ public class Login : changeScene
             if (webRequest.isNetworkError)
             {
                 Debug.Log(": Error: " + webRequest.error);
+                textError.text = webRequest.error;
+                ShowErrorMesage();
             }
             else
             {
@@ -116,5 +129,6 @@ public class ResponseQuery
 {
     public string message;
     public bool auth;
+    public string error;
     public string token;
 }
