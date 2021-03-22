@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using socket.io;
 using UnityEngine;
+using TMPro;
 
 public class PlayerSocketIO : MonoBehaviour
 {
@@ -29,10 +30,13 @@ public class PlayerSocketIO : MonoBehaviour
     {
         globalData = GameObject.Find("globalData");
 
+        GameObject nameGameTextMesh = GameObject.Find("nameGameText");
+
         if (globalData != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
             token = globalData.GetComponent<GlobalData>().Token;
+            nameGameTextMesh.GetComponent<TextMeshProUGUI>().text = globalData.GetComponent<GlobalData>().nameGameText;
             socket.EmitJson("join_room", globalData.GetComponent<GlobalData>().IdGame.ToString());
         }
         Debug.Log("start");

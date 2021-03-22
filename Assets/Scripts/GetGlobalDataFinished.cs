@@ -12,7 +12,10 @@ public class GetGlobalDataFinished : MonoBehaviour
     void Start()
     {
         globalDataObj = GameObject.Find("globalData");
-        textTimer.text = globalDataObj.GetComponent<GlobalData>().time +"";
-        textPoint.text = globalDataObj.GetComponent<GlobalData>().point +"";
+        if (globalDataObj != null)
+        {
+            textTimer.text = globalDataObj.GetComponent<GlobalData>().time + "";
+            textPoint.text = globalDataObj.GetComponent<GlobalData>().point + "";
+        }
     }
 }

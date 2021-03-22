@@ -8,6 +8,7 @@ using TMPro;
 public class Game_service : changeScene
 {
 
+    public GameObject canvasInit2;
     [Header("Create Game")]
     public TMP_InputField user;
     public TMP_InputField password;
@@ -47,7 +48,7 @@ public class Game_service : changeScene
             {
                 if (rs.idGame != 0)
                 {
-                    SetGlobalData(rs.idGame, rs.player);
+                    SetGlobalData(rs.idGame, rs.player, rs.nameGame);
                     ViewLoadScene(nextLevel);
                 }
             }
@@ -76,7 +77,9 @@ public class Game_service : changeScene
             {
                 if (rs.idGame != 0)
                 {
-                    SetGlobalData(rs.idGame, rs.player);
+                    Debug.Log("entre");
+                    SetGlobalData(rs.idGame, rs.player, rs.nameGame);
+                    canvasInit2.SetActive(false);
                     ViewLoadScene(nextLevel);
                 }
             }
@@ -90,13 +93,14 @@ public class Game_service : changeScene
     }
 
 
-    public void SetGlobalData(int idGame, int playerGame)
+    public void SetGlobalData(int idGame, int playerGame, string nameText)
     {
         GameObject globalData = GameObject.Find("globalData");
         if (GameObject.Find("globalData") != null)
         {
             globalData.GetComponent<GlobalData>().IdGame = idGame;
             globalData.GetComponent<GlobalData>().playerNum = playerGame;
+            globalData.GetComponent<GlobalData>().nameGameText = nameText;
         }
         else
         {
@@ -174,6 +178,7 @@ public class Game_service : changeScene
 public class ResponseQueryGame
 {
     public string message;
+    public string nameGame;
     public int player;
     public int idGame;
     public bool error;
