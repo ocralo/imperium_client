@@ -44,7 +44,14 @@ public class PlayerSocketIO : MonoBehaviour
 
         if (socket.IsConnected)
         {
-            socket.Emit("join_room", "9");
+            if (globalData != null)
+            {
+                socket.Emit("join_room", globalData.GetComponent<GlobalData>().IdGame.ToString());
+            }
+            else
+            {
+                socket.Emit("join_room", "9");
+            }
         }
     }
 
