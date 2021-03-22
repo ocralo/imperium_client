@@ -92,6 +92,12 @@ public class GeneratePoints : MonoBehaviour
     public void SetTimerRunning(bool timerR)
     {
         timerIsRunning = timerR;
+        GameObject globalData = GameObject.Find("gobalData");
+        if (globalData != null)
+        {
+            GameObject.Find("gobalData").GetComponent<GlobalData>().time = timeRemaining;
+        }
+        Debug.Log(" tiempo" + timeRemaining);
     }
 
     //text Rope
