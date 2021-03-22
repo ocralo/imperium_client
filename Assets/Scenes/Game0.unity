@@ -1800,7 +1800,6 @@ GameObject:
   - component: {fileID: 86643925}
   - component: {fileID: 86643924}
   - component: {fileID: 86643923}
-  - component: {fileID: 86643926}
   m_Layer: 5
   m_Name: Anterior
   m_TagString: Untagged
@@ -1871,7 +1870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 86643926}
+      - m_Target: {fileID: 1676989557}
         m_MethodName: ViewLoadScene
         m_Mode: 3
         m_Arguments:
@@ -1931,21 +1930,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86643921}
   m_CullTransparentMesh: 0
---- !u!114 &86643926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86643921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54580b9a15ac249f39f9f7014eef5931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 781712616}
-  canvasCharge: {fileID: 1110795477}
-  canvasInit: {fileID: 208183086}
 --- !u!1001 &102664501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23047,6 +23031,7 @@ GameObject:
   - component: {fileID: 1676989555}
   - component: {fileID: 1676989554}
   - component: {fileID: 1676989553}
+  - component: {fileID: 1676989557}
   m_Layer: 5
   m_Name: Gui Init
   m_TagString: Untagged
@@ -23142,6 +23127,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1676989557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676989552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54580b9a15ac249f39f9f7014eef5931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 781712616}
+  canvasCharge: {fileID: 1110795477}
+  canvasInit: {fileID: 208183086}
 --- !u!1001 &1685412077
 PrefabInstance:
   m_ObjectHideFlags: 0

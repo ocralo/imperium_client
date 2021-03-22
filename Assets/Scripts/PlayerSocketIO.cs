@@ -89,7 +89,7 @@ public class PlayerSocketIO : MonoBehaviour
         DataSendPoint requestData = JsonUtility.FromJson<DataSendPoint>(data);
         //Debug.Log("holaf : " + requestData.namePoint);
         Debug.Log(pointsMeshSecondPlayer.name + " - " + requestData.namePoint);
-        if (requestData.player == 2)
+        if (requestData.player != globalData.GetComponent<GlobalData>().playerNum)
         {
             foreach (Transform child in pointsMeshSecondPlayer.transform)
             {
