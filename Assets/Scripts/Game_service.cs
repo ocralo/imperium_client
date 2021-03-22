@@ -21,6 +21,8 @@ public class Game_service : changeScene
     [Header("Alert Error")]
     public GameObject errorGameObj;
     public TextMeshProUGUI textError;
+    public GameObject errorGameObj2;
+    public TextMeshProUGUI textError2;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -52,6 +54,7 @@ public class Game_service : changeScene
             else
             {
                 textError.text = rs.message;
+                textError2.text = rs.message;
                 ShowErrorMesage();
             }
         }));
@@ -60,6 +63,7 @@ public class Game_service : changeScene
     public void ShowErrorMesage()
     {
         errorGameObj.GetComponent<Animator>().Play("showNotificationAlert", 0);
+        errorGameObj2.GetComponent<Animator>().Play("showNotificationAlert", 0);
     }
 
     public void SubmitLogin()
@@ -79,6 +83,7 @@ public class Game_service : changeScene
             else
             {
                 textError.text = rs.message;
+                textError2.text = rs.message;
                 ShowErrorMesage();
             }
         }));
@@ -125,6 +130,7 @@ public class Game_service : changeScene
         {
             Debug.Log(www.error);
             textError.text = www.error;
+            textError2.text = www.error;
             ShowErrorMesage();
         }
         else
@@ -153,6 +159,7 @@ public class Game_service : changeScene
         {
             Debug.Log(www.error);
             textError.text = www.error;
+            textError2.text = www.error;
             ShowErrorMesage();
         }
         else

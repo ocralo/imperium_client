@@ -13,6 +13,7 @@ public class Ajustes : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void changeVolume(float newVolume)

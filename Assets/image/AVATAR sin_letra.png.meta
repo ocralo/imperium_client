@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: fe858b497b3ca4b77bc896f27582b0dc
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8358309885291038044
+    second: AVATAR sin_letra_10
+  - first:
+      213: -1750940989102456505
+    second: AVATAR sin_letra_11
+  - first:
+      213: -501050941218345156
+    second: AVATAR sin_letra_12
+  - first:
+      213: -8242307814558324926
+    second: AVATAR sin_letra_13
+  - first:
+      213: -5932797582264035827
+    second: AVATAR sin_letra_14
+  - first:
+      213: 3455273089828478292
+    second: AVATAR sin_letra_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,11 +151,137 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AVATAR sin_letra_10
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 4097
+        width: 1602
+        height: 1601
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa779c8171510c80800000000000000
+      internalID: -8358309885291038044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AVATAR sin_letra_11
+      rect:
+        serializedVersion: 2
+        x: 2626
+        y: 4097
+        width: 1602
+        height: 1601
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74180e1827863b7e0800000000000000
+      internalID: -1750940989102456505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AVATAR sin_letra_12
+      rect:
+        serializedVersion: 2
+        x: 4560
+        y: 2468
+        width: 11305
+        height: 3263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f2e4ad2d8eb09f0800000000000000
+      internalID: -501050941218345156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AVATAR sin_letra_13
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 2251
+        width: 1604
+        height: 1602
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24723d756b07d9d80800000000000000
+      internalID: -8242307814558324926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AVATAR sin_letra_14
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 239
+        width: 1602
+        height: 1602
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d061bd048087aada0800000000000000
+      internalID: -5932797582264035827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AVATAR sin_letra_15
+      rect:
+        serializedVersion: 2
+        x: 2626
+        y: 2117
+        width: 1602
+        height: 1603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d5131819893ff20800000000000000
+      internalID: 3455273089828478292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e7441f78eb6d342b9b7349cc7341fe94
     internalID: 0
     vertices: []
     indices: 
