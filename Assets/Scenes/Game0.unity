@@ -2495,8 +2495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData: {fileID: 0}
   pointsMeshSecondPlayer: {fileID: 1226324126}
-  url: http://192.168.39.164:7001
-  token: 
+  url: http://localhost:7001
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWRQbGF5ZXIiOjIsInN0dWRlbnQiOnRydWUsImlhdCI6MTYxNjQwMTE0NywiZXhwIjoxNjE2NDAyNTg3fQ.TPsSDPvK0H2y9iUlxQnVursq7abGRiHYCtgIDS0hs7c
   socket: {fileID: 0}
 --- !u!4 &142727137
 Transform:

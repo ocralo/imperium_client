@@ -23,23 +23,33 @@ public class PlayerSocketIO : MonoBehaviour
     void Awake()
     {
         instance = this;
-        socket = Socket.Connect(url);
     }
 
     void Start()
     {
         globalData = GameObject.Find("globalData");
 
-        GameObject nameGameTextMesh = GameObject.Find("nameGameText");
-
         if (globalData != null)
         {
             url = globalData.GetComponent<GlobalData>().url;
             token = globalData.GetComponent<GlobalData>().Token;
+        }
+
+        socket = Socket.Connect(url);
+
+
+        GameObject nameGameTextMesh = GameObject.Find("nameGameText");
+
+        if (globalData != null)
+        {
             nameGameTextMesh.GetComponent<TextMeshProUGUI>().text = globalData.GetComponent<GlobalData>().nameGameText;
             socket.EmitJson("join_room", globalData.GetComponent<GlobalData>().IdGame.ToString());
         }
-        Debug.Log("start");
+        else
+        {
+            socket.EmitJson("join_room", "9");
+        }
+        Debug.Log("start Socket");
     }
 
     public void JoinRoom()
@@ -79,11 +89,14 @@ public class PlayerSocketIO : MonoBehaviour
         DataSendPoint requestData = JsonUtility.FromJson<DataSendPoint>(data);
         //Debug.Log("holaf : " + requestData.namePoint);
         Debug.Log(pointsMeshSecondPlayer.name + " - " + requestData.namePoint);
-        foreach (Transform child in pointsMeshSecondPlayer.transform)
+        if (requestData.player == 2)
         {
-            if (child.gameObject.name == requestData.namePoint)
+            foreach (Transform child in pointsMeshSecondPlayer.transform)
             {
-                child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                if (child.gameObject.name == requestData.namePoint)
+                {
+                    child.gameObject.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                }
             }
         }
     }
